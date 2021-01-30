@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import { actionCreators } from "../store";
+import actionCreators from "../todoRedux/todo.action";
 
 function Detail({ toDo, onClick }) {
 	return (
@@ -12,13 +12,13 @@ function Detail({ toDo, onClick }) {
 	);
 }
 
-function mapStateToProps(state, ownProps) {
+function mapStateToProps({ list }, ownProps) {
 	const {
 		match: {
 			params: { id },
 		},
 	} = ownProps;
-	return { toDo: state.find((toDo) => toDo.id === parseInt(id)) };
+	return { toDo: list.find((toDo) => toDo.id === parseInt(id)) };
 }
 
 function mapDispatchToProps(dispatch, ownProps) {
