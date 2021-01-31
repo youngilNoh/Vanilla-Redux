@@ -1,17 +1,23 @@
-export const actionType = {
-	ADD: "ADD",
-	DELETE: "DELETE",
-};
+import { createAction } from "@reduxjs/toolkit";
 
-const addToDo = (text) => ({
-	type: actionType.ADD,
-	text,
-});
+// export const actionType = {
+// 	ADD: "ADD",
+// 	DELETE: "DELETE",
+// };
 
-const deleteToDo = (id) => ({
-	type: actionType.DELETE,
-	id,
-});
+// const addToDo = (text) => ({
+// 	type: actionType.ADD,
+// 	text,
+// });
+
+// const deleteToDo = (id) => ({
+// 	type: actionType.DELETE,
+// 	id,
+// });
+
+/* use createAction */
+const addToDo = createAction("ADD");
+const deleteToDo = createAction("DELETE");
 
 const actionCreators = {
 	addToDo,

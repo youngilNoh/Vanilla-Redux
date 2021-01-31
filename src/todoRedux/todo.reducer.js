@@ -1,6 +1,6 @@
 import { persistReducer } from "redux-persist";
 import storage from "redux-persist/lib/storage";
-import { actionType } from "./todo.action";
+import actionCreators from "./todo.action";
 
 const persistConfig = {
 	key: "root",
@@ -14,10 +14,10 @@ const initialState = {
 const reducer = (state = initialState, action) => {
 	const { list } = state;
 	switch (action.type) {
-		case actionType.ADD:
-			return { list: [{ text: action.text, id: Date.now() }, ...list] };
-		case actionType.DELETE:
-			return { list: list.filter((toDo) => toDo.id !== action.id) };
+		case actionCreators.addToDo.type:
+			return { list: [{ text: action.payload, id: Date.now() }, ...list] };
+		case actionCreators.deleteToDo.type:
+			return { list: list.filter((toDo) => toDo.id !== action.payload) };
 		default:
 			return state;
 	}
