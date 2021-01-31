@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import actionCreators from "../todoRedux/todo.action";
+import { remove } from "../todoRedux/todo.reducer";
 
 function Detail({ toDo, onClick }) {
 	return (
@@ -29,7 +29,7 @@ function mapDispatchToProps(dispatch, ownProps) {
 	} = ownProps;
 	return {
 		onClick: () => {
-			dispatch(actionCreators.deleteToDo(parseInt(id)));
+			dispatch(remove(parseInt(id)));
 			window.history.back();
 		},
 	};
